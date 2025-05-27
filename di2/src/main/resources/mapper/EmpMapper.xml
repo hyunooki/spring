@@ -48,4 +48,26 @@
 		DELETE FROM employees 
 		WHERE employee_id = #{employeeId}
 	</delete>
+	
+	<resultMap type="employees" id="employeeMap">
+	  <id column="employee_id" property="employeeId"/>
+	  <result column="first_name" property="firstName"/>
+	  <result column="last_name" property="lastName"/>
+	  <!-- 일대일일떄 -->
+	  <association property="department">
+	       <result column="department_name" property="departmentName"/>
+	  <!-- 일대다일떄 -->
+	  <!-- <collection property=""></collection> -->
+	  </association>
+	</resultMap>
+	
+	<select id="findEmplyoeeDepartment" resultMap ="employeeMap">
+	  SELECT e.*, 
+	         d.department_id,
+	         d.department_name,
+	         d.manager_id,
+	         d.location_id
+	    FROM employees e JOIN departments d
+	                       ON (e.department_id = d.department_id)
+	</select>
 </mapper>

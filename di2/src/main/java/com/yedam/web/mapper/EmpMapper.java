@@ -19,4 +19,6 @@ public interface EmpMapper {
 	int updateFirstName(Employees employee);
 	
 	int delete (String eno);
+	
+	List<Employees> findEmplyoeeDepartment();
 }

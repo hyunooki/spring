@@ -13,16 +13,29 @@ import com.yedam.web.mapper.EmpMapper;
 import com.yedam.web.model.Employees;
 import com.yedam.web.model.SearchVO;
 
+import lombok.extern.slf4j.Slf4j;
+
+
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:/spring/datasource-context.xml",
 					   "classpath:/spring/mybatis-context.xml"})
 public class EmpMapperTest {
 	
+//	private static final Logger logger = LoggerFactory.getLogger(EmpMapperTest.class);
+
+	
 	@Autowired
 	EmpMapper empMapper;
 	
-
+	//조인문 조회
 	@Test
+	public void joinSelect() {
+		empMapper.findEmplyoeeDepartment().forEach(emp -> log.info(emp.getEmployeeId()+": "+emp.getDepartment().getDepartmentName()));;
+	}
+	
+
+	//@Test
 	public void 전제조회() {
 		SearchVO svo = SearchVO.builder()
 //				.departmentId("30")
@@ -31,6 +44,7 @@ public class EmpMapperTest {
 				.build();
 	    	
 		empMapper.findAll(svo).forEach(emp -> System.out.println(emp.getEmployeeId()+":"+emp.getFirstName()));
+		empMapper.findAll(svo).forEach(emp -> log.info(emp.getEmployeeId()+":"+emp.getFirstName()));
 	}
 	
 	//@Test
