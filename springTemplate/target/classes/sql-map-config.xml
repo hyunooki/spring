@@ -9,6 +9,7 @@
 	<!-- Alias 설정 -->
 	<typeAliases>
 		<package name="com.yedam.board"/>
+		<package name="com.yedam.hr"/>
 	</typeAliases>
 	<typeHandlers>
 		<!-- java.sql.Timestamp 를 java.util.Date 형으로 반환 -->

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.hr.mapper.EmployeeMapper">
+
+  <select id="findAll" resultType="employeesVO">
+  SELECT *
+  FROM employees
+  </select>
+  
+  <select id="findById" resultType="string">
+  SELECT *
+  FROM employees
+  WHERE employee_id = #{eid}
+  </select>	
+  
+  <insert id ="insert">
+    INSERT INTO employees(employee_id,
+                          last_name,
+                          email,
+                          hire_date,
+                          job_id)
+    VALUES(#{employee_id},
+            #{last_name},
+            #{email},
+            #{hire_date},
+            #{job_id})
+  </insert>
+  
+  <update id = "update">
+   	UPDATE employees
+   	SET FIRST_NAME = #{first_name},
+		LAST_NAME = #{last_name},
+		EMAIL	  = #{email},
+		PHONE_NUMBER = #{phone_number},
+		HIRE_DATE    = #{hire_date},
+		JOB_ID  	 = #{job_id},
+		SALARY       = #{salary},
+		COMMISSION_PCT = #{commission_pct},
+		MANAGER_ID 	   = #{manager_id},
+		DEPARTMENT_ID  = #{department_id}
+	WHERE employee_id = #{employee_id}
+  </update>
+  
+  <delete id = "delete">
+     DELETE FROM employees
+     WHERE employee_id = #{employee_id}
+  </delete>
+</mapper>
