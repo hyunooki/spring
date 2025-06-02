@@ -18,6 +18,7 @@ http://www.springframework.org/schema/security https://www.springframework.org/s
 		<security:intercept-url pattern="/member" access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />
 		<security:intercept-url pattern="/**" access="isAuthenticated()" />
+		<security:form-login login-page="/login/"/>
 		<security:form-login/>
 		<!-- <security:access-denied-handler error-page="/accessError"/> -->
 		<security:access-denied-handler ref="deniedHandler"/>
